@@ -1,0 +1,77 @@
+name: pula
+age: 2
+
+## multiple ways to define boolean values
+## yes/no, on/off,true/off case insesitive
+nonveg: no
+likecricket: ON
+likemovie: true
+
+## multiple ways to define scalar array/list
+skills: [Java,Python,Rom]
+## space mandatory between hyphen and value
+luckyLetters:
+ - L
+ - R
+ - F
+luckNumbers:
+ - 2
+ - 8
+
+##Nested Object
+## multiple way to define
+company:
+ name: Citi
+ address: Chennai
+
+company1: {name: Virtusa, address: Pune}
+
+##Nested array of object
+address:
+ - city: Chennai
+   state: TN
+ - city: Noida
+   state: UP
+
+## two ways to define multi line
+# | includes new line as new line
+include_newlines: |
+            exactly as you see
+            will appear these three
+            lines of poetry
+
+#> replaces new line with space
+fold_newlines: >
+            this is really a
+            single line of text
+            despite appearances
+
+#Map
+favouriteItems:
+  number: 8
+  color: red
+  fruit: banana
+
+#if want boolean litera as value
+booleanString: "yes"
+
+##multiple way to define null. in java, it is empty string if data type is string else null
+null1: ~
+null2: null
+
+##set common properties and use with other.
+common_properties: &common
+   adapter:  postgres
+   host:     localhost
+
+development:
+ database: myapp_development
+ <<: *common
+
+test:
+   database: myapp_test
+   <<: *common
+
+## use one property to define the value of other
+subpath: ch
+mainpath: "{{ subpath }}/pula"
